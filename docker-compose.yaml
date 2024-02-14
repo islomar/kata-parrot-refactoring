@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  python-kata-name:
+    build: .
+    image: python-kata-name
+    volumes:
+      - .:/code
