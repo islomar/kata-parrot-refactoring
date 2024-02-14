@@ -65,7 +65,7 @@ class EuropeanParrot(Parrot):
         super().__init__(ParrotType.EUROPEAN, number_of_coconuts, voltage, nailed)
 
     def speed(self) -> float | int:
-        return super().speed()
+        return self._base_speed()
 
     def cry(self) -> str:
-        return super().cry()
+        return "Sqoork!"
