@@ -22,8 +22,6 @@ class Parrot:
         self._nailed = nailed
 
     def speed(self) -> float | int:
-        if self._type == ParrotType.EUROPEAN:
-            return self._base_speed()
         if self._type == ParrotType.AFRICAN:
             return max(
                 0, self._base_speed() - self._load_factor() * self._number_of_coconuts
@@ -37,8 +35,6 @@ class Parrot:
         raise ValueError("should be unreachable")
 
     def cry(self) -> str:
-        if self._type == ParrotType.EUROPEAN:
-            return "Sqoork!"
         if self._type == ParrotType.AFRICAN:
             return "Sqaark!"
         if self._type == ParrotType.NORWEGIAN_BLUE:
