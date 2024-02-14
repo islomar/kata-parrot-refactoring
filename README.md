@@ -1,11 +1,9 @@
-![Run linters and tests workflow](https://github.com/islomar/python-kata-template/actions/workflows/run-linters-and-tests.yml/badge.svg)
+![Run linters and tests workflow](https://github.com/islomar/kata-parrot-refactoring/actions/workflows/run-linters-and-tests.yml/badge.svg)
 
-# Python template for a kata
+# Python kata "Parrot refactoring"
 
-- Template repository for Python katas (Dockerized)
-- The repository is created as a **GitHub repository template**, so that you can easily create your own GitHub repository from this one.
-  - [Here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) you can find the instructions: easy peasy!
-  - There is a **GH project** associated with this repo, with some pending improvements.
+- [Parrot refactoring kata](https://github.com/emilybache/Parrot-Refactoring-Kata)
+  - Video from Emily Bache about this kata: ["Parrot: Top Code Kata | Conditional to Polymorphism Refactoring Practice"](https://www.youtube.com/watch?v=UxNEHKg_2eA)
 - Everything is **Dockerized**. If you run `make` from the root folder of the project, you can see all the actions that you can execute (e.g. running the tests, static analysis, code coverage, etc.)
 
 

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-kata-name"
+name = "kata-parrot-refactoring"
 version = "1.0.0"
 description = "This repository is a Python template project for any kata"
 authors = ["Isidro Lopez <islomar@gmail.com>"]

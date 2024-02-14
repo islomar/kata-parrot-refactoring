@@ -1,8 +1,8 @@
 version: "3.9"
 
 services:
-  python-kata-name:
+  kata-parrot-refactoring:
     build: .
-    image: python-kata-name
+    image: kata-parrot-refactoring
     volumes:
       - .:/code
