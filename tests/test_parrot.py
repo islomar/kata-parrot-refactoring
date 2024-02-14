@@ -1,8 +1,13 @@
-from src.parrot import Parrot, ParrotType
+from src.parrot import Parrot, ParrotType, EuropeanParrot
 
 
 def test_speed_of_european_parrot() -> None:
     parrot = Parrot(ParrotType.EUROPEAN, 0, 0, False)
+    assert parrot.speed() == 12.0
+
+
+def test_speed_of_european_parrot_v2() -> None:
+    parrot = EuropeanParrot(0, 0, False)
     assert parrot.speed() == 12.0
 
 
