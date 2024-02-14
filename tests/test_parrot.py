@@ -41,16 +41,16 @@ def test_speed_norwegian_blue_parrot_not_nailed() -> None:
     assert parrot.speed() == 18.0
 
 
-def test_speedNorwegianBlueParrot_not_nailed_high_voltage() -> None:
+def test_speed_norwegian_blue_parrot_not_nailed_high_voltage() -> None:
     parrot = Parrot(ParrotType.NORWEGIAN_BLUE, 0, 4, False)
     assert parrot.speed() == 24.0
 
 
-def test_cryNorwegianBlueParrot_high_voltage() -> None:
+def test_cry_norwegian_blue_parrot_high_voltage() -> None:
     parrot = Parrot(ParrotType.NORWEGIAN_BLUE, 0, 1, False)
     assert parrot.cry() == "Bzzzzzz"
 
 
-def test_cryNorwegianBlueParrot_no_voltage() -> None:
+def test_cry_norwegian_blue_parrot_no_voltage() -> None:
     parrot = Parrot(ParrotType.NORWEGIAN_BLUE, 0, 0, False)
     assert parrot.cry() == "..."
