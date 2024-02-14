@@ -3,11 +3,6 @@ from abc import ABC, abstractmethod
 
 class Parrot(ABC):
 
-    def __init__(self, number_of_coconuts: int, voltage: float, nailed: bool) -> None:
-        self._number_of_coconuts = number_of_coconuts
-        self._voltage = voltage
-        self._nailed = nailed
-
     @abstractmethod
     def speed(self) -> float | int:
         raise NotImplementedError()
@@ -22,9 +17,6 @@ class Parrot(ABC):
 
 class EuropeanParrot(Parrot):
 
-    def __init__(self, number_of_coconuts: int, voltage: float, nailed: bool) -> None:
-        super().__init__(number_of_coconuts, voltage, nailed)
-
     def speed(self) -> float | int:
         return self._base_speed()
 
@@ -34,8 +26,8 @@ class EuropeanParrot(Parrot):
 
 class AfricanParrot(Parrot):
 
-    def __init__(self, number_of_coconuts: int, voltage: float, nailed: bool) -> None:
-        super().__init__(number_of_coconuts, voltage, nailed)
+    def __init__(self, number_of_coconuts: int) -> None:
+        self._number_of_coconuts = number_of_coconuts
 
     def speed(self) -> float | int:
         return max(
@@ -51,8 +43,9 @@ class AfricanParrot(Parrot):
 
 class NorwegianBlueParrot(Parrot):
 
-    def __init__(self, number_of_coconuts: int, voltage: float, nailed: bool) -> None:
-        super().__init__(number_of_coconuts, voltage, nailed)
+    def __init__(self, voltage: float, nailed: bool) -> None:
+        self._voltage = voltage
+        self._nailed = nailed
 
     def speed(self) -> float | int:
         if self._nailed:
