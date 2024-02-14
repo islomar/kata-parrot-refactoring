@@ -19,34 +19,7 @@
     - This will set up things like configuring Git hooks. The `pre-commit` hook will automatically run the linters and tests, rejecting the commit in case any of them fail.
 
 
-## How to update or add a Python package
-  1. In the terminal, run:
-     - In case it's a development dependency: `make add-dev-package package=<package_name>` 
-     - In case it's a "production" dependency: `make add-package package=<package_name>`
-  2. Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`
-
-
-## Functionalities included
-- There is pipeline configured as a GitHub Action which runs all the linters, the tests and both the coverage and mutation testing
-  - The artifacts with the HTML reports generated can be downloaded from the GitHub project tab "Actions" --> "Summary" --> "Artifacts"
-- [**Dependabot**](https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file) is configured at GitHub repository level, in order to automatically update the dependencies weekly.
-- A **badge** on top of this README file shows the status of the GH Action (passing or failing).
-- I have used [**black**](https://github.com/psf/black) for both linting and formatting.
-  - If the format check fails, you can automatically format whatever missing running `make reformat` 
-- You can easily run the **test coverage** with `make test-coverage`
-- You can easily run **mutation testing** with `make test-run-mutation`
-  - Mutmut keeps a result cache in `.mutmut-cache` so if you want to make sure you run a full mutmut run just delete this file.
-
-
-## More interesting info
-- About mutation testing and coverage reports
-  - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-- [Caching dependencies to speed up workflows](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
-- **Mutation testing**
-  - https://github.com/boxed/mutmut
-  - In case it were needed: make mutmut mutation faster using [Hammett](https://github.com/boxed/hammett)
-  - https://opensource.com/article/20/7/mutmut-python
-  - https://medium.com/poka-techblog/hunting-mutants-with-mutmut-5f575b625598
-  - https://blog.stackademic.com/automating-mutation-testing-with-mutmut-and-github-actions-9767b4fc75b5
-    - It talks about GitHub Actions Caching Strategy
-  - Alternative: https://github.com/sixty-north/cosmic-ray
+## Steps and decisions taken in the kata
+1. I started running the test coverage: it only shown that `raise ValueError()` was never hit.
+   - Because of the use of `mypy` and typing, now it is not possible to pass a non existing parrot type to the constructor of Parrot, so we could just delete `ValueError("should be unreachable")` without getting a broken pipeline (also the commit would be rejected), the reason being that we are running `make check-typing` in both processes.
+2. Running the mutation testing (`make test-run-mutation`) showed 7 mutants surviving: that means that the initial tests are missing several use cases.

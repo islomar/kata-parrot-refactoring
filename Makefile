@@ -69,7 +69,7 @@ test-show-mutants-results: ## Show mutants found (it requires having run 'make t
 .PHONY: test-generate-mutation-html-report
 test-generate-mutation-html-report: ## Generate HTML mutation report
 	docker compose run --rm kata-parrot-refactoring poetry run mutmut html
-	@echo "The HTML report can be accessed here: http://localhost:63342/python-kata-template/html/index.html"
+	@echo "The HTML report can be accessed here: http://localhost:63342/kata-parrot-refactoring/html/index.html"
 
 .PHONY: test-generate-mutation-junit-report
 test-generate-mutation-junit-report: ## Generate JUnit XML mutation report
@@ -84,3 +84,4 @@ rename-project: ## Rename project: 'make rename new-name=<new-name>'
 	sed -i 's/kata-parrot-refactoring/$(new-name)/' Makefile
 	sed -i 's/kata-parrot-refactoring/$(new-name)/' pyproject.toml
 	sed -i 's/python-kata-template/$(new-name)/' README.md
+	sed -i 's/python-kata-template/$(new-name)/' Makefile
