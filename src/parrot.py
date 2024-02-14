@@ -3,6 +3,8 @@ from abc import ABC, abstractmethod
 
 class Parrot(ABC):
 
+    BASE_SPEED = 12.0
+
     @abstractmethod
     def speed(self) -> float | int:
         raise NotImplementedError()
@@ -11,14 +13,11 @@ class Parrot(ABC):
     def cry(self) -> str:
         raise NotImplementedError()
 
-    def _base_speed(self) -> float:
-        return 12.0
-
 
 class EuropeanParrot(Parrot):
 
     def speed(self) -> float | int:
-        return self._base_speed()
+        return self.BASE_SPEED
 
     def cry(self) -> str:
         return "Sqoork!"
@@ -31,7 +30,7 @@ class AfricanParrot(Parrot):
         self._number_of_coconuts = number_of_coconuts
 
     def speed(self) -> float | int:
-        return max(0, self._base_speed() - self.LOAD_FACTOR * self._number_of_coconuts)
+        return max(0, self.BASE_SPEED - self.LOAD_FACTOR * self._number_of_coconuts)
 
     def cry(self) -> str:
         return "Sqaark!"
@@ -47,7 +46,7 @@ class NorwegianBlueParrot(Parrot):
         if self._nailed:
             return 0
         else:
-            return min([24.0, self._voltage * self._base_speed()])
+            return min([24.0, self._voltage * self.BASE_SPEED])
 
     def cry(self) -> str:
         if self._voltage > 0:
