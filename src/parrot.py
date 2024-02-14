@@ -30,9 +30,6 @@ class Parrot(ABC):
     def cry(self) -> str:
         raise NotImplementedError()
 
-    def _load_factor(self) -> float:
-        return 9.0
-
     def _base_speed(self) -> float:
         return 12.0
 
@@ -61,6 +58,9 @@ class AfricanParrot(Parrot):
 
     def cry(self) -> str:
         return "Sqaark!"
+
+    def _load_factor(self) -> float:
+        return 9.0
 
 
 class NorwegianBlueParrot(Parrot):
