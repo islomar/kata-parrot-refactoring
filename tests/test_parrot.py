@@ -1,4 +1,4 @@
-from src.parrot import Parrot, ParrotType, EuropeanParrot
+from src.parrot import Parrot, ParrotType, EuropeanParrot, AfricanParrot
 
 
 def test_speed_of_european_parrot() -> None:
@@ -13,6 +13,11 @@ def test_cry_of_european_parrot() -> None:
 
 def test_speed_of_african_parrot_with_one_coconut() -> None:
     parrot = Parrot(ParrotType.AFRICAN, 1, 0, False)
+    assert parrot.speed() == 3.0
+
+
+def test_speed_of_african_parrot_with_one_coconut_v2() -> None:
+    parrot = AfricanParrot(1, 0, False)
     assert parrot.speed() == 3.0
 
 
