@@ -20,10 +20,16 @@
 
 
 ## Steps and decisions taken in the kata
-1. I started running the test coverage: it only shown that `raise ValueError()` was never hit.
-   - Because of the use of `mypy` and typing, now it is not possible to pass a non existing parrot type to the constructor of Parrot, so we could just delete `ValueError("should be unreachable")` without getting a broken pipeline (also the commit would be rejected), the reason being that we are running `make check-typing` in both processes.
+1. I started running the test coverage: it only showed that `raise ValueError()` was never hit.
+   - Because of the use of `mypy` and typing, now it is not possible to pass a non-existing parrot type to the constructor of Parrot, so we could just delete `ValueError("should be unreachable")` without getting a broken pipeline (also the commit would be rejected), the reason being that we are running `make check-typing` in both processes.
 2. Running the mutation testing (`make test-run-mutation`) showed 7 mutants surviving: that means that the initial tests are missing several use cases.
 3. I have done micro-commits where the baby steps can be easily followed.
    - Parallel changes as a general rule of thumb (expand and contract)
    - Delete anything not needed in the specific classes that arise
    - Finish leaving the Parrot class as an abstract class
+4. I could have created a factory method in `Parrot` or in every specific class for creating the different parrots. I find that solution "too complex" for the current needs :-)
+
+## Other options
+- https://anthonysciamanna.com/2021/08/27/refactoring-the-parrot-kata.html
+- [Software Design Mastery | Nail the Parrot Refactoring Kata in C#](https://www.youtube.com/watch?v=IvFX8Ivit1k)
+- https://github.com/trikitrok/parrot-refactoring-kata-java
