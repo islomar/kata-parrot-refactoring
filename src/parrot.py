@@ -22,22 +22,10 @@ class Parrot:
         self._nailed = nailed
 
     def speed(self) -> float | int:
-        if self._type == ParrotType.NORWEGIAN_BLUE:
-            if self._nailed:
-                return 0
-            else:
-                return self._compute_base_speed_for_voltage(self._voltage)
-
-        raise ValueError("should be unreachable")
+        return 0
 
     def cry(self) -> str:
-        if self._type == ParrotType.NORWEGIAN_BLUE:
-            if self._voltage > 0:
-                return "Bzzzzzz"
-            else:
-                return "..."
-
-        raise ValueError("should be unreachable")
+        return ""
 
     def _compute_base_speed_for_voltage(self, voltage: float) -> float:
         return min([24.0, voltage * self._base_speed()])
