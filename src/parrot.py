@@ -73,3 +73,21 @@ class AfricanParrot(Parrot):
 
     def cry(self) -> str:
         return "Sqaark!"
+
+
+class NorwegianBlueParrot(Parrot):
+
+    def __init__(self, number_of_coconuts: int, voltage: float, nailed: bool) -> None:
+        super().__init__(ParrotType.NORWEGIAN_BLUE, number_of_coconuts, voltage, nailed)
+
+    def speed(self) -> float | int:
+        if self._nailed:
+            return 0
+        else:
+            return self._compute_base_speed_for_voltage(self._voltage)
+
+    def cry(self) -> str:
+        if self._voltage > 0:
+            return "Bzzzzzz"
+        else:
+            return "..."
