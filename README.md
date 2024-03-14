@@ -1,7 +1,5 @@
 ![Run linters and tests workflow](https://github.com/islomar/kata-parrot-refactoring/actions/workflows/run-linters-and-tests.yml/badge.svg)
 
-Hola soy Jorge
-
 # Python kata "Parrot refactoring"
 
 - [Parrot refactoring kata](https://github.com/emilybache/Parrot-Refactoring-Kata)
