@@ -1,6 +1,5 @@
 .DEFAULT_GOAL := help
 
-
 help:  ## Show this help.
 	@grep -E '^\S+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "%-30s %s\n", $$1, $$2}'
@@ -37,6 +36,10 @@ update-python-packages: ## Updates the Python packages
 check-dockerfile: ## Validate the Dockerfile
 	docker run --rm -i hadolint/hadolint:latest-alpine < Dockerfile
 
+.PHONY: check-style
+check-style:  ## Check style (using flake8)
+	docker compose run --rm --no-deps kata-parrot-refactoring poetry run flake8 .
+
 .PHONY: check-typing
 check-typing:  ## Check types (using mypy)
 	docker compose run --rm --no-deps kata-parrot-refactoring poetry run mypy .
@@ -45,8 +48,8 @@ check-typing:  ## Check types (using mypy)
 check-format: ## Check the format (using black)
 	docker compose run --rm --no-deps kata-parrot-refactoring poetry run black --check .
 
-.PHONY: reformat
-reformat:  ## Format Python code
+.PHONY: fix-format
+fix-format:  ## Format Python code
 	docker compose run --rm --no-deps kata-parrot-refactoring poetry run black .
 
 .PHONY: test
@@ -77,7 +80,11 @@ test-generate-mutation-junit-report: ## Generate JUnit XML mutation report
 	docker compose run --rm kata-parrot-refactoring poetry run mutmut junitxml --suspicious-policy=ignore --untested-policy=ignore
 
 .PHONY: pre-commit
-pre-commit: check-format check-typing test
+pre-commit: check-format check-typing check-style test
+
+.PHONY: shell
+shell: ## Get into the Docker container
+	docker compose run --rm python-kata-name sh
 
 .PHONY: rename-project
 rename-project: ## Rename project: 'make rename new-name=<new-name>'
